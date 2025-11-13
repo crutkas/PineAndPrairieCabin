@@ -5,6 +5,9 @@ title: Pine & Prairie Cabin
 description: Your home away from home in Suncadia
 show_downloads: false
 
+# Disable GitHub metadata to avoid API calls
+github: [metadata]
+
 # Navigation
 header_pages:
   - index.md
