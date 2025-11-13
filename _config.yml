@@ -1,3 +1,9 @@
-theme: jekyll-theme-minimal
-title: Pine and Prairie
-description: Bookmark this to keep an eye on my project updates!
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+  - jekyll-remote-theme
+title: Pine & Prairie Cabin
+description: Your home away from home in Suncadia
+show_downloads: false
+
+# Disable GitHub metadata to avoid API calls during local builds
+github: [metadata]
