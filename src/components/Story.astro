@@ -1,0 +1,34 @@
+---
+import { storyImage } from '../data/gallery';
+---
+<section class="block" id="story">
+  <div class="story wrap">
+    <div class="copy reveal">
+      <div class="label">The Cabin</div>
+      <h2 class="display">A quiet line between forest and meadow.</h2>
+      <p class="lede">Built in the Scandinavian-modern tradition — clean wood, floor-to-ceiling glass, a gas fireplace that anchors the great room. Mornings here are long, deliberate things: coffee on the deck, the meadow still in fog, the smell of pine just past the door.</p>
+      <p class="lede" style="margin-top: 20px;">Inside Suncadia Resort, with full access to the Swim &amp; Fitness Center, Prospector and Rope Rider golf, Glade Spring Spa, and the trails that thread through six thousand acres of the eastern Cascades.</p>
+    </div>
+    <img class="reveal" src={storyImage} alt="Interior of the cabin with fireplace and warm wood" loading="lazy" />
+  </div>
+</section>
+
+<style>
+  .story {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .story .copy { padding-right: 24px; }
+  .story img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  @media (max-width: 880px) {
+    .story { grid-template-columns: 1fr; gap: 48px; }
+    .story .copy { padding-right: 0; }
+  }
+</style>

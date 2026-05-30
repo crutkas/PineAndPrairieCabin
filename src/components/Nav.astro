@@ -1,0 +1,59 @@
+---
+import { site } from '../data/site';
+---
+<nav class="nav">
+  <a class="brand" href="/">{site.nameShort}</a>
+  <ul>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#story">The Cabin</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#area">The Area</a></li>
+  </ul>
+  <a class="cta" href="#book">Check Availability</a>
+</nav>
+
+<style>
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 48px;
+    background: rgba(250, 248, 245, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(28,28,28,0.06);
+  }
+  .nav .brand {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .nav ul {
+    display: flex; gap: 36px;
+    list-style: none; margin: 0; padding: 0;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav ul a { text-decoration: none; color: var(--ink-soft); transition: color 200ms ease; }
+  .nav ul a:hover { color: var(--ink); }
+  .nav .cta {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--light-ink);
+    background: var(--ink);
+    padding: 12px 22px;
+    transition: background 200ms ease;
+  }
+  .nav .cta:hover { background: var(--forest); }
+
+  @media (max-width: 880px) {
+    .nav { padding: 16px 22px; }
+    .nav ul { display: none; }
+  }
+</style>

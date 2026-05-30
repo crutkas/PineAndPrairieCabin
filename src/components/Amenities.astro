@@ -1,0 +1,64 @@
+---
+import { amenities } from '../data/amenities';
+import Icon from './Icon.astro';
+---
+<section class="block" id="amenities">
+  <div class="amen-wrap wrap">
+    <div class="amen-head">
+      <div class="reveal">
+        <div class="label">Amenities</div>
+        <h2 class="display" style="margin:0;">Everything you'd expect.<br/>A few you wouldn't.</h2>
+      </div>
+      <p class="lede reveal">A short walk to the Swim &amp; Fitness Center. Five minutes to Roslyn. Ninety minutes from Belltown.</p>
+    </div>
+
+    <div class="amen-grid">
+      {amenities.map((cat) => (
+        <div class="amen-cat reveal">
+          <h3>{cat.title}</h3>
+          <ul>
+            {cat.items.map((i) => (
+              <li class={i.standout ? 'standout' : ''}>
+                <Icon name={i.icon} />
+                <span>{i.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .amen-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; align-items: end; }
+  .amen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 56px 48px; }
+  .amen-cat h3 {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--forest);
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .amen-cat ul { list-style: none; margin: 0; padding: 0; }
+  .amen-cat li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .amen-cat li.standout { color: var(--ink); font-weight: 500; }
+  .amen-cat li :global(svg) { color: var(--forest); flex-shrink: 0; margin-top: 4px; }
+
+  @media (max-width: 880px) {
+    .amen-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .amen-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+  }
+  @media (max-width: 520px) {
+    .amen-grid { grid-template-columns: 1fr; }
+  }
+</style>

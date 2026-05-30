@@ -1,0 +1,83 @@
+---
+import { bedrooms } from '../data/bedrooms';
+---
+<section class="block" id="bedrooms">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="label">Sleeping</div>
+      <h2 class="display" style="margin:0;">Three bedrooms.<br/>Sleeps eight.</h2>
+    </div>
+
+    <div class="bed-grid">
+      {bedrooms.map((b, idx) => (
+        <article class="bed reveal">
+          <div class="bed-img-wrap">
+            <img src={b.image} alt={b.name} loading="lazy" />
+            <span class="bed-no">{String(idx + 1).padStart(2, '0')}</span>
+          </div>
+          <div class="bed-body">
+            <h3>{b.name}</h3>
+            <p class="bed-bed">{b.bed}</p>
+            {b.notes && <p class="bed-notes">{b.notes}</p>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head { margin-bottom: 64px; }
+  .bed-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .bed { display: flex; flex-direction: column; }
+  .bed-img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--bg-elevated);
+  }
+  .bed img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 600ms ease;
+  }
+  .bed:hover img { transform: scale(1.03); }
+  .bed-no {
+    position: absolute;
+    top: 18px; left: 18px;
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--light-ink);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .bed-body { padding: 24px 0 0; }
+  .bed h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 26px;
+    margin: 0 0 6px;
+    line-height: 1.1;
+  }
+  .bed-bed {
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+  .bed-notes {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 880px) {
+    .bed-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>

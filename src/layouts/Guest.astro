@@ -1,0 +1,85 @@
+---
+/**
+ * Guest layout — used by /guest/* handbook pages.
+ * Quieter palette, narrower content column. Signals "different audience" without
+ * leaving the brand entirely.
+ */
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '../styles/global.css';
+
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = `Guest handbook — ${site.name}` } = Astro.props;
+const fullTitle = `${title} · ${site.name} · Guest Handbook`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <style>
+      :root { --max-w-narrow: 760px; }
+      body.guest { background: var(--bg); }
+      .g-shell { max-width: var(--max-w-narrow); margin: 0 auto; padding: 32px 24px 96px; }
+      .g-nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
+      .g-brand { font-family: var(--display); font-size: 20px; font-weight: 400; text-decoration: none; color: var(--ink); }
+      .g-brand small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-mute); margin-top: 2px; font-weight: 400; }
+      .g-nav a.back { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+      .g-nav a.back:hover { color: var(--forest); }
+      .g-shell h1 { font-family: var(--display); font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.05; margin: 24px 0 16px; letter-spacing: -0.01em; }
+      .g-shell h2 { font-family: var(--display); font-weight: 400; font-size: 26px; margin: 48px 0 12px; line-height: 1.2; }
+      .g-shell h3 { font-family: var(--sans); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--forest); margin: 32px 0 12px; }
+      .g-shell p { margin: 0 0 16px; color: var(--ink-soft); }
+      .g-shell ul { padding-left: 1.2em; margin: 0 0 20px; color: var(--ink-soft); }
+      .g-shell li { margin: 6px 0; }
+      .g-shell li::marker { color: var(--forest); }
+      .g-shell strong { color: var(--ink); font-weight: 500; }
+      .g-shell a { color: var(--forest); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+      .g-shell a:hover { text-decoration-color: var(--forest); }
+      .g-eyebrow { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--forest); font-weight: 500; margin-bottom: 8px; }
+      .g-callout { border-left: 3px solid var(--forest); background: var(--bg-elevated); padding: 16px 20px; margin: 24px 0; border-radius: 0; }
+      .g-callout p:last-child { margin-bottom: 0; }
+      .g-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
+      .g-card { display: block; padding: 24px; border: 1px solid var(--line); background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color 200ms ease, transform 200ms ease; }
+      .g-card:hover { border-color: var(--forest); transform: translateY(-2px); }
+      .g-card .g-eyebrow { margin-bottom: 4px; color: var(--forest); }
+      .g-card h4 { font-family: var(--display); font-weight: 400; font-size: 22px; margin: 4px 0 8px; }
+      .g-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+      .g-foot { border-top: 1px solid var(--line); margin-top: 64px; padding-top: 24px; font-size: 12px; color: var(--ink-mute); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .g-foot a { color: var(--ink-mute); }
+    </style>
+  </head>
+  <body class="guest">
+    <nav class="g-nav">
+      <a class="g-brand" href="/guest/">
+        Pine &amp; Prairie
+        <small>Guest Handbook</small>
+      </a>
+      <a class="back" href="/guest/">← All sections</a>
+    </nav>
+    <main class="g-shell">
+      <div class="g-eyebrow">Guest Handbook</div>
+      <h1>{title}</h1>
+      <slot />
+      <div class="g-foot">
+        <span>Pine &amp; Prairie Cabin · Suncadia</span>
+        <span><a href="/">Marketing site →</a></span>
+      </div>
+    </main>
+  </body>
+</html>

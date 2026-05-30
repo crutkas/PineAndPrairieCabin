@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+const mailto = `mailto:${site.email}?subject=Inquiry about Pine %26 Prairie Cabin&body=Hi%2C%0A%0ADates I'm considering%3A%0AGroup size%3A%0AAny questions%3A%0A%0AThanks!`;
+---
+<section class="block inquiry" id="inquiry">
+  <div class="wrap-narrow reveal">
+    <div class="label">Direct Inquiry</div>
+    <h2 class="display">Have a question before you book?</h2>
+    <p class="lede">For details that aren't on the Suncadia listing — pet logistics, late check-in, accessibility, family size — drop us a note. We answer within a day.</p>
+    <a class="btn primary" href={mailto}>Email {site.email}</a>
+  </div>
+</section>
+
+<style>
+  .inquiry { text-align: center; padding-top: 80px; padding-bottom: 80px; }
+  .wrap-narrow { max-width: 640px; margin: 0 auto; }
+  .wrap-narrow .label { display: block; margin-bottom: 16px; }
+  .wrap-narrow p.lede { margin: 0 auto 32px; }
+  .btn.primary { margin-top: 8px; }
+</style>
