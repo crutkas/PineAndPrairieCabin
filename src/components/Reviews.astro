@@ -1,20 +1,33 @@
 ---
 import { reviews } from '../data/reviews';
+import { site } from '../data/site';
 ---
 
 <section class="reviews">
   <div class="inner">
     <div class="label">From Recent Guests</div>
     <h2 class="display">Words <em>better</em> than ours.</h2>
-    <div class="grid">
-      {reviews.map((review) => (
-        <article class="quote reveal">
-          <span class="mark" aria-hidden="true">“</span>
-          <p>{review.text}</p>
-          <div class="attribution">{review.attribution}</div>
-        </article>
-      ))}
-    </div>
+
+    {reviews.length > 0 ? (
+      <div class="grid">
+        {reviews.map((review) => (
+          <article class="quote reveal">
+            <span class="mark" aria-hidden="true">“</span>
+            <p>{review.text}</p>
+            <div class="attribution">{review.attribution}</div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="cta-wrap reveal">
+        <p class="lede">
+          Every booking is handled through Suncadia, and every review lives there too — verified, dated, and from guests who actually stayed in the cabin.
+        </p>
+        <a class="btn ghost" href={site.bookingUrl} target="_blank" rel="noopener">
+          Read reviews on Suncadia →
+        </a>
+      </div>
+    )}
   </div>
 </section>
 
@@ -97,6 +110,24 @@ import { reviews } from '../data/reviews';
     margin-top: 24px;
     padding-top: 16px;
     text-transform: uppercase;
+  }
+
+  .cta-wrap {
+    margin-top: clamp(40px, 5vw, 56px);
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-wrap .lede {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 1.6vw, 24px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
   }
 
   @media (max-width: 760px) {

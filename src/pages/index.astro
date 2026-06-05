@@ -17,10 +17,7 @@ import Inquiry from '../components/Inquiry.astro';
 import FAQ from '../components/FAQ.astro';
 import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import Footer from '../components/Footer.astro';
-import { reviews } from '../data/reviews';
 import { quoteImageBand, areaImageBand, heroImage } from '../data/gallery';
-
-const firstReview = reviews[0];
 ---
 <Marketing preloadImage={heroImage}>
   <Nav />
@@ -28,7 +25,7 @@ const firstReview = reviews[0];
   <StatsBar />
   <Story />
   <Gallery />
-  <FullBleedQuote bg={quoteImageBand} quote={`"${firstReview.text}"`} attribution={firstReview.attribution} />
+  <FullBleedQuote bg={quoteImageBand} quote={`"An ordinary morning here is two cups of coffee, the meadow still in fog, and the absolute certainty that you made the right call."`} attribution="Pine & Prairie · 50 Harmony" />
   <Amenities />
   <Bedrooms />
   <OwnerBio />
