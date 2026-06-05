@@ -1,7 +1,23 @@
-vendor/
-.bundle/
-Gemfile.lock
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Local source assets (originals kept out of git; build pipeline regenerates variants)
+src/assets/photos-originals/
+
+# Logs & env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.production
+.env.local
+
+# Editor & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

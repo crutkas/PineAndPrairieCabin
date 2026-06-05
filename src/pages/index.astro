@@ -1,0 +1,41 @@
+---
+import Marketing from '../layouts/Marketing.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import Story from '../components/Story.astro';
+import Gallery from '../components/Gallery.astro';
+import FullBleedQuote from '../components/FullBleedQuote.astro';
+import Amenities from '../components/Amenities.astro';
+import Bedrooms from '../components/Bedrooms.astro';
+import OwnerBio from '../components/OwnerBio.astro';
+import Resort from '../components/Resort.astro';
+import Area from '../components/Area.astro';
+import Reviews from '../components/Reviews.astro';
+import Booking from '../components/Booking.astro';
+import Inquiry from '../components/Inquiry.astro';
+import FAQ from '../components/FAQ.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import Footer from '../components/Footer.astro';
+import { quoteImageBand, areaImageBand, heroImage } from '../data/gallery';
+---
+<Marketing preloadImage={heroImage}>
+  <Nav />
+  <Hero />
+  <StatsBar />
+  <Story />
+  <Gallery />
+  <FullBleedQuote bg={quoteImageBand} quote={`"An ordinary morning here is two cups of coffee, the meadow still in fog, and the absolute certainty that you made the right call."`} attribution="Pine & Prairie · 50 Harmony" />
+  <Amenities />
+  <Bedrooms />
+  <OwnerBio />
+  <Resort />
+  <FullBleedQuote bg={areaImageBand} quote="Ninety minutes east of Seattle. Five minutes from historic Roslyn. A whole season's worth of trail just past the door." />
+  <Area />
+  <Reviews />
+  <Booking />
+  <Inquiry />
+  <FAQ />
+  <Footer />
+  <StickyMobileCTA />
+</Marketing>

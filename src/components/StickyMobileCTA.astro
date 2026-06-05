@@ -1,0 +1,35 @@
+---
+/**
+ * Mobile-only fixed-bottom Check Availability bar.
+ * Hidden on desktop where the sticky nav handles the CTA.
+ */
+import { site } from '../data/site';
+---
+<a class="sticky-cta" href={site.bookingUrl} target="_blank" rel="noopener">
+  Check Availability
+  <span class="arrow">→</span>
+</a>
+
+<style>
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 90;
+    padding: 16px 24px;
+    background: var(--ink);
+    color: var(--light-ink);
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .sticky-cta .arrow { margin-left: 8px; }
+
+  @media (max-width: 760px) {
+    .sticky-cta { display: block; }
+  }
+</style>

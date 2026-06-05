@@ -1,0 +1,38 @@
+---
+import Guest from '../../layouts/Guest.astro';
+
+const sections = [
+  { url: '/guest/house', title: 'House Awareness', desc: 'Layout, important features, safety information.' },
+  { url: '/guest/wifi', title: 'WiFi & Smart Home', desc: 'Connect to wifi, smart thermostat, voice assistant, lights.' },
+  { url: '/guest/tv', title: 'TV & Streaming', desc: 'How to use the entertainment systems and streaming apps.' },
+  { url: '/guest/spa', title: 'Hot Tub', desc: 'Complete guide to using and enjoying the spa.' },
+  { url: '/guest/things-to-do', title: 'Things to Do', desc: 'Activities, restaurants, and attractions in the area.' },
+  { url: '/guest/checkout', title: 'Checkout', desc: 'Simple steps before you leave for a smooth departure.' },
+  { url: '/guest/contacts', title: 'Key Contacts', desc: 'Emergency, property management, and local services.' },
+];
+---
+<Guest title="Welcome">
+  <p>Everything you need for your stay at Pine &amp; Prairie Cabin. Bookmark this page or screenshot the contacts page before you head into the canyon — cell coverage can be spotty.</p>
+
+  <div class="g-card-grid">
+    {sections.map((s) => (
+      <a class="g-card" href={s.url}>
+        <div class="g-eyebrow">Section</div>
+        <h4>{s.title}</h4>
+        <p>{s.desc}</p>
+      </a>
+    ))}
+  </div>
+
+  <div class="g-callout">
+    <p><strong>Emergency:</strong> Dial <a href="tel:911">911</a>. The nearest hospital is Kittitas Valley Healthcare in Ellensburg (about 45 minutes). Full contact list is on the <a href="/guest/contacts">Contacts page</a>.</p>
+  </div>
+
+  <h2>House Rules at a Glance</h2>
+  <ul>
+    <li><strong>Check-in:</strong> 4:00 PM</li>
+    <li><strong>Check-out:</strong> 11:00 AM</li>
+    <li><strong>Quiet hours:</strong> 10:00 PM – 8:00 AM</li>
+    <li><strong>Bear country:</strong> never leave food or trash outside; use the bear-proof bins.</li>
+  </ul>
+</Guest>

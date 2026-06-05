@@ -1,0 +1,35 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="foot">
+  <div class="brand">{site.nameShort}</div>
+  <div class="location">Inside Suncadia Resort · Cle Elum, Washington</div>
+  <div class="row">
+    <a href={site.bookingUrl} target="_blank" rel="noopener">Book on Suncadia</a>
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+    <a href="/guest/">Guest Handbook</a>
+  </div>
+  <div class="copy">&copy; {year} {site.name}</div>
+</footer>
+
+<style>
+  .foot {
+    padding: 80px var(--gutter-x) 64px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .foot .brand { font-family: var(--display); font-size: 26px; color: var(--ink); margin-bottom: 8px; font-weight: 400; }
+  .foot .location { color: var(--ink-soft); margin-bottom: 28px; font-size: 14px; }
+  .foot .row { display: flex; justify-content: center; gap: 32px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; flex-wrap: wrap; margin-bottom: 32px; }
+  .foot .row a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 4px; transition: color 200ms ease, border-color 200ms ease; }
+  .foot .row a:hover { color: var(--forest); border-bottom-color: var(--forest); }
+  .foot .copy { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.18em; text-transform: uppercase; }
+
+  @media (max-width: 600px) {
+    .foot .row { gap: 16px; }
+  }
+</style>

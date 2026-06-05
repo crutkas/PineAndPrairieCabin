@@ -1,0 +1,68 @@
+---
+import { faq } from '../data/faq';
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+const faqJsonLdString = JSON.stringify(faqJsonLd);
+---
+<section class="block faq" id="faq">
+  <div class="wrap-narrow">
+    <div class="label reveal" style="text-align: center; margin-bottom: 16px;">Questions</div>
+    <h2 class="display reveal" style="text-align: center;">Before you ask.</h2>
+
+    <div class="faq-list">
+      {faq.map((item) => (
+        <details class="faq-item reveal">
+          <summary>
+            <span class="q">{item.q}</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="a">{item.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={faqJsonLdString}></script>
+</section>
+
+<style>
+  .faq { padding-top: 80px; }
+  .wrap-narrow { max-width: 720px; margin: 0 auto; }
+  .faq-list { margin-top: 56px; border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 17px;
+    color: var(--ink);
+    transition: color 200ms ease;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--forest); }
+  .faq-item .q { font-weight: 400; }
+  .faq-item .chev {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--forest);
+    line-height: 1;
+    transition: transform 200ms ease;
+  }
+  .faq-item[open] .chev { transform: rotate(45deg); }
+  .faq-item .a {
+    padding: 0 0 24px;
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 56ch;
+  }
+</style>

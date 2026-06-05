@@ -1,0 +1,149 @@
+---
+/**
+ * Marketing layout — used by the public single-page marketing site.
+ * Imports global fonts via @fontsource and the site-wide design tokens.
+ */
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/300-italic.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '../styles/global.css';
+
+import { amenities } from '../data/amenities';
+import { bedrooms } from '../data/bedrooms';
+import { gallery, heroImage } from '../data/gallery';
+import { site } from '../data/site';
+import { specs } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  preloadImage?: string;
+}
+
+const {
+  title = site.name,
+  description = site.tagline,
+  ogImage = '/og.png',
+  preloadImage,
+} = Astro.props;
+
+const fullTitle = title === site.name ? title : `${title} · ${site.name}`;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+const absoluteUrl = (src: string) => new URL(src, site.url).toString();
+
+const bedroomCount = bedrooms.length;
+const bathroomCount = specs.bathrooms;
+const maxOccupancy = specs.sleeps;
+const imageUrls = Array.from(new Set([
+  absoluteUrl('/og.png'),
+  absoluteUrl(heroImage),
+  ...gallery.map(({ src }) => absoluteUrl(src)),
+]));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VacationRental',
+  name: site.name,
+  description: site.tagline,
+  url: site.url,
+  image: imageUrls,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Cle Elum',
+    addressRegion: 'WA',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 47.2065,
+    longitude: -121.0712,
+  },
+  amenityFeature: amenities.flatMap(({ items }) =>
+    items.map(({ label }) => ({
+      '@type': 'LocationFeatureSpecification',
+      name: label,
+      value: true,
+    }))
+  ),
+  numberOfBedrooms: bedroomCount,
+  numberOfBathroomsTotal: bathroomCount,
+  floorSize: {
+    '@type': 'QuantitativeValue',
+    value: specs.squareFeet,
+    unitCode: 'FTK',
+  },
+  occupancy: {
+    '@type': 'QuantitativeValue',
+    name: 'Maximum occupancy',
+    maxValue: maxOccupancy,
+    unitText: 'guests',
+  },
+  petsAllowed: false,
+  sameAs: [site.bookingUrl],
+  containedInPlace: {
+    '@type': 'Resort',
+    name: 'Suncadia Resort',
+    sameAs: 'https://suncadia.com',
+  },
+};
+
+const jsonLdString = JSON.stringify(jsonLd);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}    <link rel="alternate icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#3D5A42" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, site.url).toString()} />
+    <meta property="og:site_name" content={site.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, site.url).toString()} />
+
+    <script type="application/ld+json" set:html={jsonLdString}></script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Subtle scroll-triggered reveal — only fires for users who haven't asked for reduced motion.
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+        for (const el of document.querySelectorAll('.reveal')) io.observe(el);
+      }
+    </script>
+  </body>
+</html>
