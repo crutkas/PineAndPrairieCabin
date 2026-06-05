@@ -29,7 +29,7 @@ export const specs = {
   squareFeet: 2469,
   neighborhood: 'Cabins at the Farm',
   view: 'Valley View',
-  petPolicy: 'No pets · Service animals only per ADA',
+  petPolicy: 'No pets',
   parkingSpots: 'Self-parking · Accessible parking on site',
   // Distinguishing on-property features called out in the Suncadia listing.
   standoutFeatures: [

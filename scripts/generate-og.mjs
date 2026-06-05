@@ -70,6 +70,13 @@ const svg = `
         font-size: 24px;
         font-weight: 300;
       }
+      .specs {
+        fill: #6b6663;
+        font-family: 'Inter', 'Arial', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+      }
       .domain {
         fill: #f7f3ec;
         font-family: 'Inter', 'Arial', sans-serif;
@@ -83,11 +90,12 @@ const svg = `
   <rect width="${width}" height="${height}" fill="#FAF8F5" />
   <rect y="${bandY}" width="${width}" height="${bandHeight}" fill="#3D5A42" />
 
-  <text class="eyebrow" x="${width / 2}" y="150" text-anchor="middle">SUNCADIA RESORT · CLE ELUM</text>
+  <text class="eyebrow" x="${width / 2}" y="150" text-anchor="middle">SUNCADIA RESORT · CABINS AT THE FARM</text>
   <text class="title" x="${width / 2}" y="272" text-anchor="middle">
     <tspan>Pine &amp; </tspan><tspan font-style="italic">Prairie</tspan><tspan> Cabin</tspan>
   </text>
   <text class="tagline" x="${width / 2}" y="342" text-anchor="middle">A Scandinavian-modern retreat ninety minutes east of Seattle</text>
+  <text class="specs" x="${width / 2}" y="395" text-anchor="middle">SLEEPS 11 · 3 BED · 3.5 BATH</text>
 
   <text class="domain" x="${width / 2}" y="${bandY + bandHeight / 2}" dominant-baseline="middle" text-anchor="middle">PINEANDPRAIRIECABIN.COM</text>
 </svg>`;
