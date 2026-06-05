@@ -6,54 +6,53 @@ export interface Photo {
 }
 
 /**
- * PLACEHOLDER PHOTOS — Unsplash, cabin/lodge themed.
- * Replace with photography from the Suncadia listing or pro shoot.
- *
- * When real photos arrive:
- *   1. Drop them into src/assets/images/
- *   2. Import them at the top of this file: import hero from '../assets/images/hero.jpg';
- *   3. Swap `src: 'https://...'` for `src: hero.src` and Astro will optimize at build.
+ * Real photography from the Suncadia listing for unit 133889 ("50 Harmony").
+ * Files live in /public/images/cabin/ so they're served as-is.
+ * Owner: replace any of these with a pro-shot version by dropping the same
+ * filename into /public/images/cabin/ (or update the path here).
  */
+const IMG = '/images/cabin';
+
 export const gallery: Photo[] = [
   {
-    src: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1600&q=85&auto=format&fit=crop',
-    alt: 'Cabin exterior at dusk',
-    caption: 'Exterior at Dusk',
+    src: `${IMG}/50harmony-040.jpg`,
+    alt: 'Daytime exterior — terracotta wood siding, double garage, pines',
+    caption: 'The Cabin',
     span: 'g1',
   },
   {
-    src: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=85&auto=format&fit=crop',
-    alt: 'Primary suite',
-    caption: 'Primary Suite',
+    src: `${IMG}/50harmony-013.jpg`,
+    alt: 'Great room with vaulted ceiling, fireplace, and dining table',
+    caption: 'Great Room',
     span: 'g2',
   },
   {
-    src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85&auto=format&fit=crop',
-    alt: 'Great room with fireplace',
-    caption: 'Great Room',
+    src: `${IMG}/50harmony-024.jpg`,
+    alt: 'Heated garage game room with skee-ball, Pac-Man, foosball, XL Jenga',
+    caption: 'Game Room',
     span: 'g3',
   },
   {
-    src: 'https://images.unsplash.com/photo-1556909195-4e5e7b2e3e5d?w=1200&q=85&auto=format&fit=crop',
-    alt: 'Kitchen',
-    caption: 'Kitchen',
+    src: `${IMG}/50harmony-005.jpg`,
+    alt: 'Open kitchen and living area with floor-to-ceiling glass',
+    caption: 'Kitchen & Living',
     span: 'g4',
   },
   {
-    src: 'https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=1200&q=85&auto=format&fit=crop',
-    alt: 'Hot tub at night',
-    caption: 'Hot Tub at Dusk',
+    src: `${IMG}/50harmony-025.jpg`,
+    alt: 'Mother-in-Law suite above the garage with bunk beds and kitchenette',
+    caption: 'Mother-in-Law Suite',
     span: 'g5',
   },
   {
-    src: 'https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=1200&q=85&auto=format&fit=crop',
-    alt: 'Deck view',
-    caption: 'The Deck',
+    src: `${IMG}/50harmony-045.jpg`,
+    alt: 'Cabin exterior at night under a starry sky',
+    caption: 'Under the Stars',
     span: 'g6',
   },
 ];
 
-export const heroImage = 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=2200&q=85&auto=format&fit=crop';
-export const storyImage = 'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1400&q=85&auto=format&fit=crop';
-export const quoteImageBand = 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=2200&q=85&auto=format&fit=crop';
-export const areaImageBand = 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2200&q=85&auto=format&fit=crop';
+export const heroImage = `${IMG}/50harmony-046.jpg`;
+export const storyImage = `${IMG}/50harmony-009.jpg`;
+export const quoteImageBand = `${IMG}/50harmony-042.jpg`;
+export const areaImageBand = `${IMG}/50harmony-039.jpg`;

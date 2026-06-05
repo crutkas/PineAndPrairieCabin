@@ -17,7 +17,7 @@ export const bedrooms: Bedroom[] = [
     notes: 'En-suite bathroom with walk-in shower. Meadow view.',
     beds: 'King · Main floor',
     features: 'En-suite bathroom with walk-in shower. Meadow view.',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=85&auto=format&fit=crop',
+    image: '/images/cabin/50harmony-001.jpg',
   },
   {
     name: 'Bedroom Two',
@@ -25,7 +25,7 @@ export const bedrooms: Bedroom[] = [
     notes: 'Shared Jack-and-Jill bath with combination tub/shower.',
     beds: 'Queen · Upstairs',
     features: 'Shared Jack-and-Jill bath with combination tub/shower.',
-    image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=85&auto=format&fit=crop',
+    image: '/images/cabin/50harmony-019.jpg',
   },
   {
     name: 'Bedroom Three',
@@ -33,7 +33,7 @@ export const bedrooms: Bedroom[] = [
     notes: 'Shared Jack-and-Jill bath with combination tub/shower.',
     beds: 'King · Upstairs',
     features: 'Shared Jack-and-Jill bath with combination tub/shower.',
-    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200&q=85&auto=format&fit=crop',
+    image: '/images/cabin/50harmony-020.jpg',
   },
 ];
 
@@ -43,5 +43,5 @@ export const motherInLawSuite: Bedroom = {
   notes: 'Two twin-over-full bunk beds and a full sleeper sofa, plus a private bathroom, a kitchenette with dining for four, and its own TV lounge. Cheerful kid-themed décor — the place children claim as their own from the moment they arrive.',
   beds: 'Two twin-over-full bunks + full sleeper sofa',
   features: 'Private bath, kitchenette with dining for four, TV lounge.',
-  image: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=1200&q=85&auto=format&fit=crop',
+  image: '/images/cabin/50harmony-028.jpg',
 };
