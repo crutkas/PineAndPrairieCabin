@@ -14,11 +14,11 @@ export const faq: FAQItem[] = [
   },
   {
     q: 'How many guests can stay?',
-    a: 'Sleeps eight comfortably across three bedrooms (King · Queen · Two Twins).',
+    a: 'Sleeps eleven across three bedrooms (King · Queen · King) plus a self-contained Mother-in-Law suite above the garage with two twin-over-full bunk beds, a full sleeper sofa, and its own bath and kitchenette.',
   },
   {
     q: 'Are pets welcome?',
-    a: 'Yes — dogs are welcome (max two) for a $75 per-pet fee. Cats are not permitted under the Suncadia rental program.',
+    a: 'No — this is a pet-free home. Service animals are welcome in accordance with the ADA.',
   },
   {
     q: 'Are there resort fees?',
@@ -30,7 +30,7 @@ export const faq: FAQItem[] = [
   },
   {
     q: 'Is parking included?',
-    a: 'Yes — private parking at the cabin for two vehicles. EV charging available within Suncadia.',
+    a: 'Yes — self-parking at the cabin plus accessible parking on site. EV charging is available within Suncadia.',
   },
   {
     q: 'Is the hot tub really year-round?',

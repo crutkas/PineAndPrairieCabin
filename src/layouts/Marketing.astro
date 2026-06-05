@@ -17,6 +17,7 @@ import { amenities } from '../data/amenities';
 import { bedrooms } from '../data/bedrooms';
 import { gallery, heroImage } from '../data/gallery';
 import { site } from '../data/site';
+import { specs } from '../data/site';
 
 interface Props {
   title?: string;
@@ -37,8 +38,8 @@ const canonical = new URL(Astro.url.pathname, site.url).toString();
 const absoluteUrl = (src: string) => new URL(src, site.url).toString();
 
 const bedroomCount = bedrooms.length;
-const bathroomCount = 2.5;
-const maxOccupancy = 8;
+const bathroomCount = specs.bathrooms;
+const maxOccupancy = specs.sleeps;
 const imageUrls = Array.from(new Set([
   absoluteUrl('/og.png'),
   absoluteUrl(heroImage),
@@ -72,6 +73,11 @@ const jsonLd = {
   ),
   numberOfBedrooms: bedroomCount,
   numberOfBathroomsTotal: bathroomCount,
+  floorSize: {
+    '@type': 'QuantitativeValue',
+    value: specs.squareFeet,
+    unitCode: 'FTK',
+  },
   occupancy: {
     '@type': 'QuantitativeValue',
     name: 'Maximum occupancy',

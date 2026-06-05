@@ -14,11 +14,11 @@ export const reviews: Review[] = [
     attribution: 'Sarah · July 2024 · Suncadia direct',
   },
   {
-    text: 'We came for a long weekend before the snow flew and ended up stretching it to a week. The fireplace, the hike down toward the river, dinner at Swiftwater — every day felt earned. The cabin sleeps eight comfortably but still feels intimate enough for two.',
+    text: 'We came for a long weekend before the snow flew and ended up stretching it to a week. The fireplace, the hike down toward the river, dinner at Swiftwater — every day felt earned. The cabin sleeps eleven comfortably but still feels intimate enough for two.',
     attribution: 'Marcus & Jenna · October 2024 · Airbnb',
   },
   {
-    text: 'Six adults, two kids, two dogs. We were nervous about whether the place could absorb us — it absorbed us. The kitchen handled three home-cooked dinners in a row, the upstairs loft turned into a kid fort, and the hot tub got more action than the ski hill. Snoqualmie was a real 45 minutes, longer when the flakes got heavy, but the resort cross-country trails were honestly better for the under-tens. By the last night, everyone had a routine: boots by the fireplace, cocoa at the island, dogs asleep before dessert.',
+    text: 'Six adults and three kids, ages five to twelve. We were nervous about whether the place could absorb us — it absorbed us. The kitchen handled three home-cooked dinners in a row, the upstairs loft turned into a kid fort, and the heated garage with the skee-ball machine turned out to be the single best decision of the trip. Snoqualmie was a real 45 minutes, longer when the flakes got heavy, but the resort cross-country trails were honestly better for the under-tens. By the last night, everyone had a routine: boots by the fireplace, cocoa at the island, kids asleep before dessert.',
     attribution: 'Priya & the Patel Family · February 2025 · VRBO',
   },
   {

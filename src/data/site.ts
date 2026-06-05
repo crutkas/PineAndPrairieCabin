@@ -1,9 +1,4 @@
 /**
- * PLACEHOLDER specs — verify with owner before launch.
- * These values came from agent best-guess for a 2,400 sq ft Suncadia cabin.
- * Owner: edit and remove the PLACEHOLDER comment when confirmed.
- */
-/**
  * Single source of truth for site-wide constants.
  * Owner: update phone, email, address as needed.
  */
@@ -19,21 +14,28 @@ export const site = {
   bookingUrl: 'https://suncadia.com/stay/accommodations/vacation-rentals/vacation-rental-search/?unitID=133889',
   bookingPhone: '(509) 260-4225',
   bookingPhoneTel: '+15092604225',
-  // The Suncadia neighborhood the cabin is most likely in (per research).
-  // Owner: confirm or correct.
   neighborhood: 'Cabins at the Farm',
+  address: '50 Harmony',
 } as const;
 
+/**
+ * Specs sourced from the Suncadia listing for unit 133889 ("50 Harmony").
+ * Verified against the listing detail screenshot. Owner: spot-check before launch.
+ */
 export const specs = {
   bedrooms: 3,
-  bathrooms: 2.5,
-  sleeps: 8,
-  squareFeet: 2400,
-  acres: 0.25,
+  bathrooms: 3.5,
+  sleeps: 11,
+  squareFeet: 2469,
   neighborhood: 'Cabins at the Farm',
-  yearBuilt: 2019,
-  petPolicy: 'Dog-friendly · 2 dog max · $75/dog cleaning fee',
-  parkingSpots: 3,
-  // Average nightly range for stats bar / SEO context only — never displayed without owner approval
-  priceRangeHint: '$425–$675/night seasonal',
+  view: 'Valley View',
+  petPolicy: 'No pets · Service animals only per ADA',
+  parkingSpots: 'Self-parking · Accessible parking on site',
+  // Distinguishing on-property features called out in the Suncadia listing.
+  standoutFeatures: [
+    'Mother-in-Law suite above garage with kitchenette and bunk room',
+    'Heated garage game room (XL Jenga, skee-ball, foosball, Pac-Man)',
+    'Private hot tub on covered patio',
+    'Gas fireplace in main living area',
+  ],
 } as const;
