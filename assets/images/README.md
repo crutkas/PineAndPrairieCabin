@@ -4,6 +4,9 @@ This directory should contain the following images for the website. Replace thes
 
 ## Required Images
 
+### Site Branding
+1. **logo.svg** - Atomic age Pine & Prairie Cabin logo used by the site theme
+
 ### Homepage (index.md)
 1. **cabin-exterior.jpg** - Main exterior view of the cabin, ideally showing the modern Scandinavian architecture, preferably during golden hour or with mountain backdrop
 2. **living-room.jpg** - Interior shot of the main living area showing the open concept design, fireplace, and modern furnishings
