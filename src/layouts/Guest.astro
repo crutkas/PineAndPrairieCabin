@@ -10,6 +10,9 @@ import '@fontsource/inter/300.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
+import '@fontsource/jost/300.css';
+import '@fontsource/jost/400.css';
+import Logo from '../components/Logo.astro';
 import '../styles/global.css';
 
 import { site } from '../data/site';
@@ -38,6 +41,7 @@ const fullTitle = `${title} · ${site.name} · Guest Handbook`;
       .g-shell { max-width: var(--max-w-narrow); margin: 0 auto; padding: 32px 24px 96px; }
       .g-nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
       .g-brand { font-family: var(--display); font-size: 20px; font-weight: 400; text-decoration: none; color: var(--ink); }
+      .g-brand :global(.g-logo) { display: block; height: 30px; width: auto; max-width: 70vw; margin-bottom: 4px; }
       .g-brand small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-mute); margin-top: 2px; font-weight: 400; }
       .g-nav a.back { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
       .g-nav a.back:hover { color: var(--forest); }
@@ -66,8 +70,8 @@ const fullTitle = `${title} · ${site.name} · Guest Handbook`;
   </head>
   <body class="guest">
     <nav class="g-nav">
-      <a class="g-brand" href="/guest/">
-        Pine &amp; Prairie
+      <a class="g-brand" href="/guest/" aria-label="Pine & Prairie Guest Handbook">
+        <Logo class="g-logo" />
         <small>Guest Handbook</small>
       </a>
       <a class="back" href="/guest/">← All sections</a>

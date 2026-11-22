@@ -1,8 +1,12 @@
 ---
 import { site } from '../data/site';
+import Logo from './Logo.astro';
 ---
 <nav class="nav">
-  <a class="brand" href="/">{site.nameShort}</a>
+  <a class="brand" href="/" aria-label={site.nameShort}>
+    <Logo class="lockup" />
+    <Logo variant="mark" class="mark" />
+  </a>
   <ul>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#story">The Cabin</a></li>
@@ -22,14 +26,10 @@ import { site } from '../data/site';
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(28,28,28,0.06);
   }
-  .nav .brand {
-    font-family: var(--display);
-    font-size: 22px;
-    letter-spacing: 0.02em;
-    font-weight: 400;
-    text-decoration: none;
-    color: var(--ink);
-  }
+  .nav .brand { display: flex; align-items: center; line-height: 0; flex-shrink: 0; }
+  .nav .brand :global(.lockup) { height: 36px; width: auto; }
+  .nav .brand :global(.mark) { display: none; height: 30px; width: auto; }
+  .nav ul a, .nav .cta { white-space: nowrap; }
   .nav ul {
     display: flex; gap: 36px;
     list-style: none; margin: 0; padding: 0;
@@ -52,8 +52,18 @@ import { site } from '../data/site';
   }
   .nav .cta:hover { background: var(--forest); }
 
+  @media (max-width: 1200px) {
+    .nav .brand :global(.lockup) { height: 28px; }
+    .nav ul { gap: 22px; letter-spacing: 0.14em; }
+  }
+  @media (max-width: 1040px) {
+    .nav ul { display: none; }
+  }
   @media (max-width: 880px) {
     .nav { padding: 16px 22px; }
-    .nav ul { display: none; }
+  }
+  @media (max-width: 520px) {
+    .nav .brand :global(.lockup) { display: none; }
+    .nav .brand :global(.mark) { display: block; }
   }
 </style>
