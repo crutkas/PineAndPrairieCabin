@@ -35,14 +35,20 @@ const fullTitle = `${title} · ${site.name} · Guest Handbook`;
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <style>
+    <style is:global>
       :root { --max-w-narrow: 760px; }
       body.guest { background: var(--bg); }
       .g-shell { max-width: var(--max-w-narrow); margin: 0 auto; padding: 32px 24px 96px; }
-      .g-nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
-      .g-brand { font-family: var(--display); font-size: 20px; font-weight: 400; text-decoration: none; color: var(--ink); }
-      .g-brand :global(.g-logo) { display: block; height: 30px; width: auto; max-width: 70vw; margin-bottom: 4px; }
-      .g-brand small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-mute); margin-top: 2px; font-weight: 400; }
+      .g-nav { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 20px 32px 14px; border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
+      .g-brand { display: block; line-height: 0; text-decoration: none; }
+      .g-brand .g-logo { height: 58px; width: auto; max-width: calc(100vw - 48px); }
+      .g-bar { display: flex; align-items: center; justify-content: center; gap: 40px; width: 100%; max-width: 1100px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .g-label { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--forest); }
+      @media (max-width: 820px) {
+        .g-nav { padding: 14px 20px 12px; gap: 10px; }
+        .g-brand .g-logo { height: 40px; }
+        .g-bar { gap: 24px; padding-top: 10px; }
+      }
       .g-nav a.back { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
       .g-nav a.back:hover { color: var(--forest); }
       .g-shell h1 { font-family: var(--display); font-weight: 300; font-size: clamp(36px, 5vw, 52px); line-height: 1.05; margin: 24px 0 16px; letter-spacing: -0.01em; }
@@ -60,6 +66,7 @@ const fullTitle = `${title} · ${site.name} · Guest Handbook`;
       .g-callout p:last-child { margin-bottom: 0; }
       .g-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 32px 0; }
       .g-card { display: block; padding: 24px; border: 1px solid var(--line); background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color 200ms ease, transform 200ms ease; }
+      .g-shell a.g-card { text-decoration: none; color: var(--ink); }
       .g-card:hover { border-color: var(--forest); transform: translateY(-2px); }
       .g-card .g-eyebrow { margin-bottom: 4px; color: var(--forest); }
       .g-card h4 { font-family: var(--display); font-weight: 400; font-size: 22px; margin: 4px 0 8px; }
@@ -72,9 +79,11 @@ const fullTitle = `${title} · ${site.name} · Guest Handbook`;
     <nav class="g-nav">
       <a class="g-brand" href="/guest/" aria-label="Pine & Prairie Guest Handbook">
         <Logo class="g-logo" />
-        <small>Guest Handbook</small>
       </a>
-      <a class="back" href="/guest/">← All sections</a>
+      <div class="g-bar">
+        <span class="g-label">Guest Handbook</span>
+        <a class="back" href="/guest/">← All sections</a>
+      </div>
     </nav>
     <main class="g-shell">
       <div class="g-eyebrow">Guest Handbook</div>
