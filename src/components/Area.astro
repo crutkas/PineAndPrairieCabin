@@ -1,0 +1,85 @@
+---
+import { seasons, nearbyTowns } from '../data/area';
+---
+<section class="block" id="area">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="label">The Area</div>
+      <h2 class="display" style="margin:0;">Four seasons<br/>in one valley.</h2>
+    </div>
+
+    <div class="seasons">
+      {seasons.map((s) => (
+        <div class="season reveal">
+          <h3>{s.name}</h3>
+          <ul>
+            {s.items.map((i) => (
+              <li>
+                <span class="item-name">{i.name}</span>
+                <span class="item-dist">{i.distance}</span>
+                <span class="item-desc">{i.description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="towns reveal">
+      <div class="label" style="margin-bottom: 18px;">Nearby</div>
+      <ul class="towns-list">
+        {nearbyTowns.map((t) => (
+          <li>
+            <strong>{t.name}</strong>
+            <em>{t.distance}</em>
+            <span>{t.description}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .head { margin-bottom: 64px; max-width: 720px; }
+
+  .seasons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 96px;
+  }
+  .season h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 32px;
+    margin: 0 0 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .season ul { list-style: none; margin: 0; padding: 0; }
+  .season li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .season li:last-child { border-bottom: none; }
+  .season .item-name { display: block; font-size: 15px; font-weight: 500; color: var(--ink); }
+  .season .item-dist {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--forest); margin: 4px 0;
+  }
+  .season .item-desc { display: block; font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+
+  .towns-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 48px; }
+  .towns-list li { display: grid; grid-template-columns: 140px 80px 1fr; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .towns-list strong { font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--ink); }
+  .towns-list em { font-style: normal; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--forest); font-weight: 500; }
+  .towns-list span { font-size: 14px; color: var(--ink-soft); }
+
+  @media (max-width: 880px) {
+    .seasons { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+    .towns-list { grid-template-columns: 1fr; gap: 0; }
+    .towns-list li { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+  }
+  @media (max-width: 520px) {
+    .seasons { grid-template-columns: 1fr; }
+  }
+</style>

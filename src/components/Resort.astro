@@ -1,0 +1,71 @@
+---
+import { resortFeatures } from '../data/resort';
+---
+<section class="block" id="resort">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="label">The Resort</div>
+      <h2 class="display" style="margin:0;">Suncadia,<br/>in full.</h2>
+      <p class="lede" style="margin-top: 24px;">Pine &amp; Prairie sits inside Suncadia — 6,400 acres of golf, spa, swim, dining, and trail. Every link below opens the resort's own page.</p>
+    </div>
+
+    <div class="cards">
+      {resortFeatures.map((card) => (
+        <a class="card reveal" href={card.url} target="_blank" rel="noopener">
+          <h3>{card.title}</h3>
+          <p>{card.description}</p>
+          <span class="arrow">Visit page →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head { margin-bottom: 64px; max-width: 720px; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 200ms ease, transform 200ms ease, background 200ms ease;
+  }
+  .card:hover {
+    border-color: var(--forest);
+    background: var(--bg-elevated);
+    transform: translateY(-2px);
+  }
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 24px;
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .card p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    flex: 1;
+    line-height: 1.6;
+  }
+  .arrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 500;
+  }
+
+  @media (max-width: 880px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>

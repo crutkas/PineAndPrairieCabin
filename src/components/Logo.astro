@@ -1,0 +1,28 @@
+---
+/**
+ * Pine & Prairie logo, inlined so the lockup text uses the page's Jost webfont.
+ * Source artwork lives in /public/brand/.
+ */
+interface Props {
+  variant?: 'lockup' | 'mark';
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { variant = 'lockup', tone = 'light', class: className } = Astro.props;
+const c = tone === 'dark'
+  ? { mark: '#A8875A', rule: '#5E6A62', name: '#F2EEE6', sub: '#A8875A' }
+  : { mark: '#1E2923', rule: '#B9B4A8', name: '#1E2923', sub: '#7A6343' };
+const font = "Jost, 'Futura', 'Helvetica Neue', Arial, sans-serif";
+---
+{variant === 'mark' ? (
+  <svg class={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" role="img" aria-label="Pine &amp; Prairie">
+    <g fill={c.mark}><polygon points="60,4 69,44 51,44" /><rect x="0" y="43.8" width="120" height="1.4" /></g>
+  </svg>
+) : (
+  <svg class={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 54" role="img" aria-label="Pine &amp; Prairie, Suncadia, Washington">
+    <g transform="translate(0 8) scale(0.7667)" fill={c.mark}><polygon points="60,4 69,44 51,44" /><rect x="0" y="43.8" width="120" height="1.4" /></g>
+    <rect x="118" y="0" width="1" height="54" fill={c.rule} />
+    <text x="144" y="24" font-family={font} font-size="24" font-weight="300" letter-spacing="10" fill={c.name}>PINE &amp; PRAIRIE</text>
+    <text x="144" y="50" font-family={font} font-size="10" font-weight="400" letter-spacing="4.8" fill={c.sub}>SUNCADIA · WASHINGTON</text>
+  </svg>
+)}

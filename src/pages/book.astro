@@ -1,0 +1,17 @@
+---
+import { site } from '../data/site';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting to Suncadia booking…</title>
+    <meta http-equiv="refresh" content={`0; url=${site.bookingUrl}`} />
+    <link rel="canonical" href={site.bookingUrl} />
+    <meta name="robots" content="noindex, follow" />
+  </head>
+  <body>
+    <p>Redirecting to <a href={site.bookingUrl}>{site.bookingUrl}</a>…</p>
+    <script set:html={`window.location.replace(${JSON.stringify(site.bookingUrl)});`} />
+  </body>
+</html>

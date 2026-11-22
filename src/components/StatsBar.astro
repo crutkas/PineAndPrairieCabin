@@ -1,0 +1,35 @@
+---
+import { stats } from '../data/stats';
+---
+<div class="stats">
+  {stats.map((s) => (
+    <div class="stat">
+      <strong>{s.value}</strong>{s.label && <span>{s.label}</span>}
+    </div>
+  ))}
+</div>
+
+<style>
+  .stats {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 0;
+    padding: 28px 48px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .stat {
+    padding: 6px 32px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat strong { color: var(--ink); font-weight: 500; margin-right: 6px; }
+
+  @media (max-width: 760px) {
+    .stats { padding: 18px; gap: 8px 0; }
+    .stat { padding: 4px 14px; font-size: 10px; letter-spacing: 0.16em; border-right: none; }
+  }
+</style>

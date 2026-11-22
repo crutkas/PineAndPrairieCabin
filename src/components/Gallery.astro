@@ -1,0 +1,56 @@
+---
+import { gallery } from '../data/gallery';
+---
+<section class="block" id="gallery" style="padding-top: 40px;">
+  <div class="gallery-wrap wrap-wide">
+    <div class="gallery-head">
+      <div class="reveal">
+        <div class="label">The Gallery</div>
+        <h2 class="display" style="margin:0;">A few moments<br/>from the cabin.</h2>
+      </div>
+      <a class="right" href="/photos">View all 34 photos →</a>
+    </div>
+    <div class="grid">
+      {gallery.map((p) => (
+        <figure class={p.span}>
+          <img src={p.src} alt={p.alt} loading="lazy" />
+          {p.caption && <figcaption>{p.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; gap: 48px; flex-wrap: wrap; }
+  .gallery-head .right { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+  .gallery-head .right:hover { color: var(--forest); border-bottom-color: var(--forest); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 140px;
+    gap: 16px;
+  }
+  .grid figure { margin: 0; overflow: hidden; position: relative; background: var(--bg-elevated); }
+  .grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+  .grid figure:hover img { transform: scale(1.04); }
+  .grid figcaption {
+    position: absolute; bottom: 14px; left: 16px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--light-ink); text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity 200ms ease;
+  }
+  .grid figure:hover figcaption { opacity: 1; }
+  .g1 { grid-column: span 7; grid-row: span 3; }
+  .g2 { grid-column: span 5; grid-row: span 2; }
+  .g3 { grid-column: span 5; grid-row: span 1; }
+  .g4 { grid-column: span 4; grid-row: span 2; }
+  .g5 { grid-column: span 4; grid-row: span 2; }
+  .g6 { grid-column: span 4; grid-row: span 2; }
+
+  @media (max-width: 880px) {
+    .grid { grid-auto-rows: 100px; gap: 8px; }
+    .g1, .g2, .g3, .g4, .g5, .g6 { grid-column: span 12; grid-row: span 2; }
+  }
+</style>

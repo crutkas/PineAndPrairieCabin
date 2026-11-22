@@ -1,0 +1,32 @@
+---
+import Marketing from '../layouts/Marketing.astro';
+---
+<Marketing title="Not found" description="That page isn't here.">
+  <div class="nf">
+    <div class="label">404</div>
+    <h1 class="display">Off the trail.</h1>
+    <p class="lede">That page isn't here. Try the front door instead.</p>
+    <a class="btn primary" href="/">← Back to the cabin</a>
+  </div>
+</Marketing>
+
+<style>
+  .nf {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px;
+  }
+  .nf .label { margin-bottom: 16px; }
+  .nf h1 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(56px, 9vw, 96px);
+    line-height: 1;
+    margin: 0 0 16px;
+  }
+  .nf p.lede { margin-bottom: 40px; }
+</style>

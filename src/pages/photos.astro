@@ -1,0 +1,253 @@
+---
+import Marketing from '../layouts/Marketing.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import { site } from '../data/site';
+
+interface PhotoEntry {
+  src: string;
+  alt: string;
+}
+interface PhotoGroup {
+  title: string;
+  description?: string;
+  photos: PhotoEntry[];
+}
+
+const IMG = '/images/cabin';
+
+const groups: PhotoGroup[] = [
+  {
+    title: 'The Exterior',
+    description: 'A Scandinavian-modern silhouette tucked into the Cabins at the Farm neighborhood — terracotta wood, deep eaves, and a covered patio that lives outdoors from May through October.',
+    photos: [
+      { src: `${IMG}/50harmony-040.jpg`, alt: 'Daytime front exterior with two-car garage' },
+      { src: `${IMG}/50harmony-043.jpg`, alt: 'Side porch entry with bench and wreath' },
+      { src: `${IMG}/50harmony-041.jpg`, alt: 'Back covered patio with hot tub looking out to meadow' },
+      { src: `${IMG}/50harmony-042.jpg`, alt: 'Private hot tub on the covered patio' },
+      { src: `${IMG}/50harmony-046.jpg`, alt: 'Cabin at night with fire pit lit and glowing glass walls' },
+      { src: `${IMG}/50harmony-045.jpg`, alt: 'Cabin exterior at night with stars overhead' },
+      { src: `${IMG}/50harmony-037.jpg`, alt: 'Aerial view of the cabin and garage from above' },
+      { src: `${IMG}/50harmony-039.jpg`, alt: 'Aerial of Cabins at the Farm with the eastern Cascades behind' },
+    ],
+  },
+  {
+    title: 'The Great Room',
+    description: 'Vaulted ceilings, a gas fireplace that anchors the room, and floor-to-ceiling glass that opens onto the meadow.',
+    photos: [
+      { src: `${IMG}/50harmony-013.jpg`, alt: 'Great room with dining table, fireplace, and vaulted ceiling' },
+      { src: `${IMG}/50harmony-009.jpg`, alt: 'Living area with chairs facing the gas fireplace' },
+      { src: `${IMG}/50harmony-010.jpg`, alt: 'Living room from a second angle showing the fireplace' },
+    ],
+  },
+  {
+    title: 'Kitchen & Dining',
+    description: 'A working kitchen — counter seating, gas range, full pantry — built for the weekend everyone cooks together.',
+    photos: [
+      { src: `${IMG}/50harmony-005.jpg`, alt: 'Open kitchen, dining, and living area with vaulted ceiling' },
+      { src: `${IMG}/50harmony-006.jpg`, alt: 'Kitchen island looking back through the great room' },
+      { src: `${IMG}/50harmony-011.jpg`, alt: 'Kitchen island with bar stools and the dining table beyond' },
+      { src: `${IMG}/50harmony-014.jpg`, alt: 'Kitchen with stove, refrigerator, and counter seating' },
+      { src: `${IMG}/50harmony-007.jpg`, alt: 'Kitchen detail with appliances and pendant lighting' },
+      { src: `${IMG}/50harmony-029.jpg`, alt: 'Pendant lights over the kitchen island with wine on the counter' },
+      { src: `${IMG}/50harmony-030.jpg`, alt: 'In-home coffee bar shelf with Keurig and mugs' },
+      { src: `${IMG}/50harmony-031.jpg`, alt: 'Dining table with bench seating ready for a meal' },
+    ],
+  },
+  {
+    title: 'Stairs',
+    photos: [
+      { src: `${IMG}/50harmony-022.jpg`, alt: 'Stairwell with chandelier and tall windows showing exterior siding' },
+    ],
+  },
+  {
+    title: 'The Bedrooms',
+    description: 'A king on the main floor with an en-suite walk-in shower. Upstairs: a queen and a king sharing a Jack-and-Jill bath. Sleeps eight across the main house.',
+    photos: [
+      { src: `${IMG}/50harmony-001.jpg`, alt: 'Primary suite — king bed with wood headboard and meadow window' },
+      { src: `${IMG}/50harmony-002.jpg`, alt: 'Primary suite from a second angle with sitting bench and view to the en-suite bath' },
+      { src: `${IMG}/50harmony-019.jpg`, alt: 'Upstairs queen bedroom with whitewashed wood and vaulted ceiling' },
+      { src: `${IMG}/50harmony-015.jpg`, alt: 'Upstairs bedroom with dark wood bed and vaulted ceiling' },
+      { src: `${IMG}/50harmony-020.jpg`, alt: 'Upstairs king bedroom with view to the Jack-and-Jill bath beyond' },
+    ],
+  },
+  {
+    title: 'Bathrooms',
+    photos: [
+      { src: `${IMG}/50harmony-003.jpg`, alt: 'Primary bath with double vanity and walk-in shower' },
+      { src: `${IMG}/50harmony-016.jpg`, alt: 'Upstairs Jack-and-Jill bath with combination tub and shower' },
+      { src: `${IMG}/50harmony-018.jpg`, alt: 'Upstairs Jack-and-Jill bath looking through to the king bedroom' },
+    ],
+  },
+  {
+    title: 'The Game Room',
+    description: 'A heated garage that doubles as a game room — Pac-Man, skee-ball, foosball, XL Jenga. Where everyone ends up after dinner.',
+    photos: [
+      { src: `${IMG}/50harmony-024.jpg`, alt: 'Game room with skee-ball, Pac-Man cabinet, foosball, and XL Jenga' },
+      { src: `${IMG}/50harmony-023.jpg`, alt: 'Game room with foosball, classic arcade, and skee-ball' },
+    ],
+  },
+  {
+    title: 'Mother-in-Law Suite',
+    description: 'A self-contained apartment above the garage: private entrance, kitchenette, TV lounge, full bath, and a kid-friendly bunk room (two twin-over-full bunks plus a full sleeper sofa). The reason this cabin sleeps eleven.',
+    photos: [
+      { src: `${IMG}/50harmony-025.jpg`, alt: 'Mother-in-Law suite — kitchenette, dining, sleeper sofa, and bunk room' },
+      { src: `${IMG}/50harmony-026.jpg`, alt: 'Mother-in-Law suite kitchen and dining from a second angle' },
+      { src: `${IMG}/50harmony-028.jpg`, alt: 'Mother-in-Law suite bunk room with view to the neighborhood' },
+      { src: `${IMG}/50harmony-027.jpg`, alt: 'Mother-in-Law suite bathroom with tub and shower' },
+    ],
+  },
+];
+
+const totalPhotos = groups.reduce((sum, g) => sum + g.photos.length, 0);
+const pageTitle = 'All Photos';
+const pageDescription = `Every published photograph of Pine & Prairie Cabin (50 Harmony) — a full tour of the great room, bedrooms, kitchen, game room, Mother-in-Law suite, and grounds. ${totalPhotos} photos.`;
+---
+<Marketing title={pageTitle} description={pageDescription}>
+  <Nav />
+
+  <header class="photos-hero">
+    <div class="inner">
+      <div class="label">{totalPhotos} Photographs</div>
+      <h1 class="display">Every angle of <em>the cabin</em>.</h1>
+      <p class="lede">A full walk-through, in the order you'd see it on your first visit — start outside in the meadow, drift through the great room, finish in the garage with Pac-Man.</p>
+      <a class="btn primary" href={site.bookingUrl} target="_blank" rel="noopener">Check Availability on Suncadia →</a>
+    </div>
+  </header>
+
+  {groups.map((group) => (
+    <section class="group">
+      <div class="inner">
+        <div class="group-head">
+          <h2 class="display">{group.title}</h2>
+          {group.description && <p class="lede">{group.description}</p>}
+        </div>
+        <div class="masonry">
+          {group.photos.map((p) => (
+            <figure>
+              <img src={p.src} alt={p.alt} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="bottom-cta">
+    <div class="inner">
+      <p class="lede">Ready to book or have a question about the cabin?</p>
+      <div class="row">
+        <a class="btn primary" href={site.bookingUrl} target="_blank" rel="noopener">Check Availability →</a>
+        <a class="btn ghost" href="/">← Back to the cabin</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <StickyMobileCTA />
+</Marketing>
+
+<style>
+  .photos-hero {
+    background: var(--bg);
+    padding: 140px var(--gutter-x) 64px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .photos-hero .inner { max-width: 880px; margin: 0 auto; }
+  .photos-hero .label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .photos-hero h1 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.05;
+    margin: 0 0 24px;
+    letter-spacing: -0.01em;
+  }
+  .photos-hero h1 em { font-style: italic; }
+  .photos-hero .lede {
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0 auto 32px;
+  }
+
+  .group {
+    padding: 80px var(--gutter-x);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .group:nth-child(even) { background: var(--bg-elevated); }
+  .group .inner { max-width: 1280px; margin: 0 auto; }
+  .group-head { max-width: 720px; margin: 0 0 40px; }
+  .group h2 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.1;
+    margin: 0 0 12px;
+  }
+  .group .lede {
+    font-size: clamp(15px, 1.1vw, 17px);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .masonry {
+    column-count: 3;
+    column-gap: 20px;
+  }
+  .masonry figure {
+    margin: 0 0 20px;
+    break-inside: avoid;
+    background: var(--bg-elevated);
+    overflow: hidden;
+  }
+  .masonry img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 600ms ease;
+  }
+  .masonry figure:hover img { transform: scale(1.03); }
+
+  .bottom-cta {
+    padding: 96px var(--gutter-x);
+    text-align: center;
+    background: var(--bg);
+  }
+  .bottom-cta .inner { max-width: 720px; margin: 0 auto; }
+  .bottom-cta .lede {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(22px, 2vw, 28px);
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .bottom-cta .row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 980px) {
+    .masonry { column-count: 2; }
+  }
+  @media (max-width: 600px) {
+    .masonry { column-count: 1; }
+    .photos-hero { padding-top: 110px; }
+    .group { padding: 56px var(--gutter-x); }
+  }
+</style>
