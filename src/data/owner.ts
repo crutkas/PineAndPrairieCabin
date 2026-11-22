@@ -1,6 +1,6 @@
-// PLACEHOLDER vignette — agent-written scaffolding. Owner: edit firstName + body + photo.
+// PLACEHOLDER body — agent-written scaffolding. Owner: edit body + photo.
 export const owner = {
-  firstName: 'The Owner',
+  firstName: 'Clint and Sarah',
   greeting: 'From Our Family to Yours',
   body: [
     'We first saw the cabin on a cold morning when the meadow was still tucked under fog. We stood on the deck with borrowed mugs of coffee and watched an elk move through the treeline like it owned the place. By the time the sun reached the grass, we were already making excuses for why this was not a sensible decision and why we were going to do it anyway.',
